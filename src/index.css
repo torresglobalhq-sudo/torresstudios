@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Barbra';
+  src: url('/fonts/Barbra-Regular.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;700;900&family=Inter:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --color-brand-red: #ff3300;
+  --color-brand-orange: #ff7700;
+  --color-night-dark: #0a0a0a;
+}
+
+body {
+  background-color: var(--color-night-dark);
+  color: #eeeeee;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: white;
+  color: black;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hovering {
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.custom-cursor.text-mode {
+  width: 4px;
+  height: 40px;
+  border-radius: 0;
+  background: white;
+  border: none;
+}
+
+/* Global Film Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99990;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+/* Utilities */
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+  color: transparent;
+}
+.text-outline-hover:hover {
+  -webkit-text-stroke: 0px;
+  color: white;
+}
+
+/* Hide scrollbar for clean aesthetic */
+::-webkit-scrollbar {
+  display: none;
+}
